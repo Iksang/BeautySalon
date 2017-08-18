@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">BeautySalon</string>
+    <!-- LoginActivity-->
+    <string name="worker_mode">직원모드</string>
+    <string name="user_Id">사용자 ID</string>
+    <string name="user_pw">비밀번호</string>
+    <string name="auto_login">자동 로그인</string>
+    <string name="login">로그인</string>
+    <string name="id_edt_hint">사용자 아이디를 입력하세요.</string>
+    <string name="password_edt_hint">비밀번호를 입력하세요.</string>
+
+    <!-- MainActivity -->
+    <string name="main_activity_title">시작하기</string>
+
+    <!-- ViewDesigerDetailActivity -->
+    <string name="designer_detail_activity_title">디자이너 상세 정보</string>
+    <string name="name">이름</string>
+    <string name="gender">성별</string>
+    <string name="nickname">닉네임</string>
+    <string name="major_Age">연령대</string>
+    <string name="rating">평점</string>
+    <string name="man">남자</string>
+    <string name="woman">여자</string>
+    <string name="check_schedule">일정 확인</string>
+    <string name="reservation_exe">예약하러 가기</string>
+
+    <!--MakeReservationActivity-->
+    <string name="make_reservation_activity_title">예약하기</string>
+    <string name="reservation_date">예약 날짜</string>
+    <string name="select_date">날짜 선택</string>
+    <string name="reservation_time">예약 시간</string>
+    <string name="select_time">시간 선택</string>
+    <string name="reservation_confirm">예약 신청</string>
+    <string name="reservation_complete">예약이 완료되었습니다.</string>
+    <string name="user_preffer_style">원하는 스타일</string>
+    <string name="large_category">대분류</string>
+    <string name="small_category">소분류</string>
+
+    <string-array name="hair_styles">
+        <item>반삭</item>
+        <item>댄디컷</item>
+        <item>샤기컷</item>
+        <item>다운펌</item>
+        <item>투블럭</item>
+    </string-array>
+
+    <!--WorkerMainActivity-->
+    <string name="worker_main_activitiy_title">예약 목록 확인</string>
+
+
+    <!-- Common -->
+    <string name="preparing_message">준비중인 기능입니다</string>
+
+</resources>

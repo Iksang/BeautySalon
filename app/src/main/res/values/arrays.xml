@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="woman_hair_styles">
+        <item>컷</item>
+        <item>펌</item>
+        <item>염색</item>
+        <item>트리트먼트</item>
+    </string-array>
+</resources>
