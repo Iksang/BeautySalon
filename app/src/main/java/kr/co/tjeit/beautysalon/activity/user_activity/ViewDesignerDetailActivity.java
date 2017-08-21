@@ -7,19 +7,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import kr.co.tjeit.beautysalon.R;
 import kr.co.tjeit.beautysalon.activity.BaseActivity;
-import kr.co.tjeit.beautysalon.activity.user_activity.MakeReservationActivity;
-import kr.co.tjeit.beautysalon.adapters.PortfolioAdapter;
+import kr.co.tjeit.beautysalon.adapters.ReviewAdapter;
+import kr.co.tjeit.beautysalon.datas.DesignCase;
 import kr.co.tjeit.beautysalon.datas.Designer;
+import kr.co.tjeit.beautysalon.utils.GlobalData;
 
 public class ViewDesignerDetailActivity extends BaseActivity {
 
-    private Designer mDesigner;
+    private Designer mDesigner = null;
     private android.widget.TextView nameTxt;
     private android.widget.TextView genderTxt;
     private android.widget.TextView nickNameTxt;
@@ -30,11 +32,14 @@ public class ViewDesignerDetailActivity extends BaseActivity {
     private android.widget.ImageView star3;
     private android.widget.ImageView star4;
     private android.widget.ImageView star5;
-    ArrayList<ImageView> stars = new ArrayList<ImageView>();
-    private android.widget.Button checkScheduleBtn;
+    private android.widget.ListView reviewListView;
+    private android.widget.Button makeReviewBtn;
     private android.widget.Button reservationBtn;
-    private android.widget.ListView portfolioListView;
-    PortfolioAdapter portfolioAdapter;
+
+    private ReviewAdapter mAdapter;
+
+    final int REQUEST_FOR_REVIEW = 1;
+
 
 
 
@@ -43,42 +48,79 @@ public class ViewDesignerDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_designer_detail);
 
+        mDesigner = (Designer)getIntent().getSerializableExtra("designer");
 
         bindViews();
-        mDesigner = (Designer)getIntent().getSerializableExtra("designer");
-        setValues();
         setupEvents();
-
-
-
+        setValues();
 
     }
 
     @Override
     public void setupEvents() {
         super.setupEvents();
-
-
-        // 일정확인 버튼을 누르면, 준비중인 기능입니다. 토스트 띄워주기
-        // => setOnClick, new onClick => 원하는버튼 (id)
-        checkScheduleBtn.setOnClickListener(new View.OnClickListener() {
+        makeReviewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, R.string.preparing_message, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, MakeReviewActivity.class);
+                startActivityForResult(intent, REQUEST_FOR_REVIEW);
             }
         });
+    }
 
-        // 예약하러 가기 버튼 -> MakeReservationActivity 생성후 넘겨
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_FOR_REVIEW){
+            if(resultCode == RESULT_OK){
+                String reviewStr = data.getStringExtra("리뷰내용");
+                int ratingNum = data.getIntExtra("평점",0);
 
+//                이 화면에 나타난 디자이너의 리뷰목록을 하나 추가해주고
+//                그 리스트뷰를 새로고침.
+                DesignCase tempCase = new DesignCase(R.drawable.salon_logo,
+                        Calendar.getInstance(),ratingNum+1, mDesigner, GlobalData.loginUser,15000,reviewStr);
+                mDesigner.getPortfolio( ).add(tempCase);
+                mAdapter.notifyDataSetChanged();
 
-        reservationBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, MakeReservationActivity.class);
-                intent.putExtra("designer", mDesigner);
-                startActivity(intent);
+//                애니메이션을 이용해, 마지막칸으로 이동시켜주는 기능.
+//                reviewListView.smoothScrollToPosition(mAdapter.getCount() - 1);
+                reviewListView.smoothScrollToPosition(mDesigner.getPortfolio().size() - 1);
+
             }
-        });
+        }
+
+    }
+
+    @Override
+    public void setValues() {
+        super.setValues();
+        nameTxt.setText(mDesigner.getName());
+        if(mDesigner.getGender()==0){
+            genderTxt.setText("남자");
+        }
+        else if(mDesigner.getGender()==1){
+            genderTxt.setText("여자");
+        }
+        nickNameTxt.setText(mDesigner.getNickName());
+        majorAgeTxt.setText(mDesigner.getMajorAge()+"대");
+        List<ImageView> stars = new ArrayList<>();
+        stars.clear();
+        stars.add(star1);
+        stars.add(star2);
+        stars.add(star3);
+        stars.add(star4);
+        stars.add(star5);
+        for(ImageView iv : stars){
+            iv.setVisibility(View.GONE);
+        }
+        for(int i = 0 ;  i < mDesigner.getAvgRating() ; i++){
+            stars.get(i).setVisibility(View.VISIBLE);
+        }
+
+        mAdapter = new ReviewAdapter(mContext, mDesigner.getPortfolio());
+        reviewListView.setAdapter(mAdapter);
+
 
     }
 
@@ -86,8 +128,8 @@ public class ViewDesignerDetailActivity extends BaseActivity {
     public void bindViews() {
         super.bindViews();
         this.reservationBtn = (Button) findViewById(R.id.reservationBtn);
-        this.checkScheduleBtn = (Button) findViewById(R.id.checkScheduleBtn);
-        this.portfolioListView = (ListView) findViewById(R.id.portfolioListView);
+        this.makeReviewBtn = (Button) findViewById(R.id.makeReviewBtn);
+        this.reviewListView = (ListView) findViewById(R.id.reviewListView);
         this.star5 = (ImageView) findViewById(R.id.star5);
         this.star4 = (ImageView) findViewById(R.id.star4);
         this.star3 = (ImageView) findViewById(R.id.star3);
@@ -98,47 +140,5 @@ public class ViewDesignerDetailActivity extends BaseActivity {
         this.nickNameTxt = (TextView) findViewById(R.id.nickNameTxt);
         this.genderTxt = (TextView) findViewById(R.id.genderTxt);
         this.nameTxt = (TextView) findViewById(R.id.nameTxt);
-
-        stars.add(star1);
-        stars.add(star2);
-        stars.add(star3);
-        stars.add(star4);
-        stars.add(star5);
-
-
-    }
-
-    @Override
-    public void setValues() {
-        super.setValues();
-        portfolioAdapter = new PortfolioAdapter(mContext, mDesigner.getPortfolio());
-        portfolioListView.setAdapter(portfolioAdapter);
-
-        nameTxt.setText(mDesigner.getName());
-        if(mDesigner.getGender() == 0) {
-            genderTxt.setText(R.string.man);
-        }
-        else {
-            genderTxt.setText(R.string.woman);
-        }
-
-
-
-
-        // setText에 String이외의 자료형을 넣으면
-        // 코드 작성시에는 에러가 안남.
-        // 하지만 실행중에 앱이 뻗게됨.
-        // String외의 자료형을 넣는다 -> 변수 + ""
-        nickNameTxt.setText(mDesigner.getNickName());
-        majorAgeTxt.setText(mDesigner.getMajorAge()+"대");
-
-
-        ratingTxt.setText(mDesigner.getAvgRating()+"");
-
-        int index = (int)mDesigner.getAvgRating();
-
-        for(int i = 0; i < index ; i++ ) {
-            stars.get(i).setVisibility(View.VISIBLE);
-        }
     }
 }

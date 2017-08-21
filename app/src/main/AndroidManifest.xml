@@ -28,7 +28,8 @@
         <activity android:name=".activity.admin_activity.AdminMainActivity" />
         <activity android:name=".activity.user_activity.MakeReservationActivity" />
         <activity android:name=".activity.user_activity.DesignerFilterActivity" />
-        <activity android:name=".ReqPracticeActivity"></activity>
+        <activity android:name=".ReqPracticeActivity" />
+        <activity android:name=".activity.user_activity.MakeReviewActivity"></activity>
     </application>
 
 </manifest>

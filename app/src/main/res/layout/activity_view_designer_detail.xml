@@ -104,38 +104,38 @@
                 android:id="@+id/star1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:src="@drawable/rating_star"/>
             <ImageView
                 android:id="@+id/star2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:src="@drawable/rating_star"/>
             <ImageView
                 android:id="@+id/star3"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:src="@drawable/rating_star"/>
             <ImageView
                 android:id="@+id/star4"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:src="@drawable/rating_star"/>
             <ImageView
                 android:id="@+id/star5"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:src="@drawable/rating_star"/>
 
         </LinearLayout>
 
     </LinearLayout>
     <ListView
-        android:id="@+id/portfolioListView"
+        android:id="@+id/reviewListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -151,10 +151,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/checkScheduleBtn"
+            android:id="@+id/makeReviewBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/check_schedule"
+            android:text="리뷰 남기기"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/reservationBtn"

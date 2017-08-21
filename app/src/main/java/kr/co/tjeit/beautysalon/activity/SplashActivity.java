@@ -67,6 +67,9 @@ public class SplashActivity extends BaseActivity {
 
     private void addUsers() {
 
+        GlobalData.loginUser = new User("테스트사용자",1,Calendar.getInstance(),new ArrayList<Designer>(),
+                "http://upload2.inven.co.kr/upload/2017/06/09/bbs/i14754277015.jpg");
+
         GlobalData.users.clear();
         GlobalData.users.add(new User("한상열",0,Calendar.getInstance(),new ArrayList<Designer>(), "https://s3.ap-northeast-2.amazonaws.com/slws3/imgs/tje_practice/11379757_445206435653478_1894580131_n.jpg"));
         GlobalData.users.add(new User("최종환",0,Calendar.getInstance(),new ArrayList<Designer>(), "https://s3.ap-northeast-2.amazonaws.com/slws3/imgs/tje_practice/13731255_1566785090293996_693997005_n.jpg"));
@@ -82,5 +85,15 @@ public class SplashActivity extends BaseActivity {
         GlobalData.designers.add(new Designer("김정남",1,"KJN",30,3.8f,new ArrayList<DesignCase>()));
         GlobalData.designers.add(new Designer("이승철",0,"LSC",50,2.5f,new ArrayList<DesignCase>()));
         GlobalData.designers.add(new Designer("박준",0,"PJ",10,4.8f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("A",1,"aaa",10,1.5f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("B",0,"bbb",20,0.0f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("C",1,"ccc",30,2.8f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("D",0,"ddd",20,2.5f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("E",0,"eee",10,3.8f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("F",1,"fff",40,4.5f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("G",0,"ggg",20,1.0f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("H",1,"hhh",30,3.8f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("I",0,"iii",50,2.5f,new ArrayList<DesignCase>()));
+        GlobalData.designers.add(new Designer("j",0,"jjj",10,1.8f,new ArrayList<DesignCase>()));
     }
 }

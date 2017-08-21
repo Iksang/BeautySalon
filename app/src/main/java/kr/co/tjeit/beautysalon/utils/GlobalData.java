@@ -19,4 +19,7 @@ public class GlobalData {
     public static List<DesignCase> globalDesignCase = new ArrayList<>();
     public static List<Designer> designers = new ArrayList<>();
     public static List<User> users = new ArrayList<>();
+
+//    로그인한 사용자의 데이터. (임시로 생성)
+    public static User loginUser = new User();
 }

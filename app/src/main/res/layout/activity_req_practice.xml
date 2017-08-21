@@ -8,6 +8,7 @@
     tools:context="kr.co.tjeit.beautysalon.ReqPracticeActivity">
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
@@ -22,4 +23,15 @@
             android:layout_height="wrap_content"
             android:text="확인"/>
     </LinearLayout>
+    <SeekBar
+        android:padding="10dp"
+        android:id="@+id/ratingSeekbar"
+        android:max="5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/ratingSelectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="선택"/>
 </LinearLayout>
