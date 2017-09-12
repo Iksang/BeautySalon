@@ -20,11 +20,11 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        addUsers();
+//        addUsers();
 
-        addDesigners();
+//        addDesigners();
 
-        addDesignCase();
+//        addDesignCase();
 
         new Handler().postDelayed(new Runnable() {
             @Override

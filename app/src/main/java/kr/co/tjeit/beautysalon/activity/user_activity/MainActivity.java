@@ -1,6 +1,7 @@
 package kr.co.tjeit.beautysalon.activity.user_activity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,8 @@ import kr.co.tjeit.beautysalon.ReqPracticeActivity;
 import kr.co.tjeit.beautysalon.activity.BaseActivity;
 import kr.co.tjeit.beautysalon.adapters.DesignerListAdapter;
 import kr.co.tjeit.beautysalon.datas.Designer;
+import kr.co.tjeit.beautysalon.utils.DBManager;
+import kr.co.tjeit.beautysalon.utils.DataBaseUtil;
 import kr.co.tjeit.beautysalon.utils.GlobalData;
 
 public class MainActivity extends BaseActivity {
@@ -42,6 +45,7 @@ public class MainActivity extends BaseActivity {
 
     // 화면에 출력되는 디자이너 목록을 담는 리스트
     List<Designer> mDisplayDesignerList = new ArrayList<>();
+    private Button profileBtn;
 
     // 일반 사용자가 로그인 했을때 나타나는 화면
 
@@ -92,6 +96,14 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ReqPracticeActivity.class);
                 startActivityForResult(intent,REQUEST_FOR_REQPRACTICE_ACTIVITY);
+            }
+        });
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MyProfileActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -224,7 +236,31 @@ public class MainActivity extends BaseActivity {
         // 액티비티가 처음 생성될 때 필요한 데이터/화면 값 설정.
         super.setValues();
 
-        // 처음에는 조건없이 모든 디자이너를 화면에 출력해야함.
+
+
+        GlobalData.designers.clear();
+        GlobalData.designers.addAll(DataBaseUtil.getDesignersFromDB(mContext));
+
+
+//        DB에서 모든 디자이너 목록을 가져와서
+//        GlobalData의 designer에 모두 추가가
+//        Cursor c = DBManager.getInstance(mContext).getAllDesigners();
+//        if(c != null){
+//           while (c.moveToNext()){
+//               Designer d = new Designer();
+//               d.setName(c.getString(1));
+//               d.setNickName(c.getString(c.getColumnIndex("nickName")));
+//               d.setGender(c.getInt(2));
+//               d.setMajorAge(c.getInt(4));
+//               d.setAvgRating(c.getFloat(c.getColumnIndex("avgRating")));
+//
+//               GlobalData.designers.add(d);
+//           }
+//        }
+
+
+
+        // 음에는 조건없이 모든 디자이너를 화면에 출력해야함.
         // 화면에 표시될 List에, Global데이터의 모든 디자이너를 추가.
         mDisplayDesignerList.addAll(GlobalData.designers);
 
@@ -234,6 +270,27 @@ public class MainActivity extends BaseActivity {
         mAdapter = new DesignerListAdapter(mContext, mDisplayDesignerList);
         designerListView.setAdapter(mAdapter);
 
+//        Cursor cursor = DBManager.getInstance(mContext).getAllDesignersCursor();
+//
+//        if(cursor != null){
+//            while(cursor.moveToNext()){
+//                Toast.makeText(mContext, "디자이너 : " + cursor.getString(1), Toast.LENGTH_SHORT).show();
+//            }
+//        }
+
+//        1. 20대를 타겟으로 하는 디자이너의 이름을 토스트로
+
+//
+//        Cursor cursor = DBManager.getInstance(mContext).get20MajorDesigner();
+//
+//        if(cursor != null){
+//            while(cursor.moveToNext()){
+//                Toast.makeText(mContext, "이름 : " + cursor.getString(0), Toast.LENGTH_SHORT).show();
+//            }
+//        }
+
+
+
 
     }
 
@@ -242,6 +299,7 @@ public class MainActivity extends BaseActivity {
         super.bindViews();
         this.designerListView = (ListView) findViewById(R.id.designerListView);
         this.filterBtn = (ImageView) findViewById(R.id.filterBtn);
+        this.profileBtn = (Button) findViewById(R.id.profileBtn);
         this.reqTestBtn = (Button) findViewById(R.id.reqTestBtn);
 
     }

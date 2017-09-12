@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="kr.co.tjeit.beautysalon.activity.worker_activity.WorkerSignupActivity">
+
+    <EditText
+        android:id="@+id/nameEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이름을 입력하세요"/>
+    <EditText
+        android:id="@+id/nickNameEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="사용할 닉네임을 입력하세요"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/manBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="남성"/>
+        <RadioButton
+            android:id="@+id/womanBtn"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="여성"/>
+    </RadioGroup>
+    <RadioGroup
+        android:id="@+id/ageRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/ageBtn1"
+            android:tag="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10대"/>
+        <RadioButton
+            android:id="@+id/ageBtn2"
+            android:tag="20"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20대"/>
+        <RadioButton
+            android:id="@+id/ageBtn3"
+            android:tag="30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30대"/>
+        <RadioButton
+            android:id="@+id/ageBtn4"
+            android:tag="40"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40대"/>
+        <RadioButton
+            android:id="@+id/ageBtn5"
+            android:tag="50"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40대"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/okBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="확인"/>
+
+</LinearLayout>

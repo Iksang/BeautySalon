@@ -51,4 +51,9 @@
     <!-- Common -->
     <string name="preparing_message">준비중인 기능입니다</string>
 
+    <!--Facebook Login-->
+    <string name="facebook_app_id">1919867634891597</string>
+    <string name="fb_login_protocol_scheme">fb1919867634891597</string>
+
+
 </resources>

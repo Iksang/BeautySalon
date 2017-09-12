@@ -12,7 +12,7 @@ public class Designer extends Person implements Serializable {
     private String nickName;
     private int majorAge;
     private float avgRating;
-    private ArrayList<DesignCase> portfolio;
+    private ArrayList<DesignCase> portfolio = new ArrayList<>();
 
 
     // 1. Person 상속 받게

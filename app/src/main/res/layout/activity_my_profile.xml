@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="kr.co.tjeit.beautysalon.activity.user_activity.MyProfileActivity">
+
+    <TextView
+        android:id="@+id/userIdTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용자의 아이디가 나타납니다."
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/userNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용자의 이름이 나타납니다."
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/userGenderTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용자의 성별이 나타납니다."
+        android:textSize="20sp"/>
+
+</LinearLayout>

@@ -12,10 +12,16 @@
         android:background="@color/red">
 
         <Button
+            android:visibility="gone"
             android:id="@+id/reqTestBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="평점필터"/>
+        <Button
+            android:id="@+id/profileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="프로필"/>
 
         <TextView
             android:textSize="20sp"
